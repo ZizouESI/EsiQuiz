@@ -2,6 +2,10 @@ package model;
 
 public class Qo extends Question {
 	
+	public Qo(String enonce) {
+		super(enonce);
+		// TODO Auto-generated constructor stub
+	}
 	private String[] bonneReponsesProposé;
 	private String reponse;
 	
