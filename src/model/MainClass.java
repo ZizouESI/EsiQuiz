@@ -19,6 +19,13 @@ public class MainClass {
 		formation.ajoutApprenant(appr);
 		appr= new Apprenant("s_sadeg","aziz","Sadeg","Souhila",date,"wiss",gr);
 		formation.ajoutApprenant(appr);
+		//affichage des apprenants
+		formation.afficheApprenants();
+		//suppression de l'apprenant1
+		formation.suppApprenant(1);
+		formation.afficheApprenants();
+		//mise a jour d un apprenant
+		formation.majApprenant(0, appr);
 		formation.afficheApprenants();
 		/*Formation form=new Formation("ALSDS","jgdsjhgfj",date,date);
 		Apprenant appr= new Apprenant("hr_aziz","kazer1999","AZIZ","Rezak",date,"Semghoune",gr);

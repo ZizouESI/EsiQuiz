@@ -11,17 +11,17 @@ public class Formation {
 	private String description;
 	private Date dateDebut;
 	private Date dateFin;
-	private Apprenant[] apprenants;
-	private Quiz[] quizz;
+	private ArrayList<Apprenant> apprenants=new ArrayList<Apprenant>();
+	private ArrayList<Quiz> quizz=new ArrayList<Quiz>();
 	//private Formateur formateur; facultatif
-	private Notion[] notions;
+	private ArrayList<Notion> notions=new ArrayList<Notion>();
 	
 	//manipulation tableau 
 	private int taiTabApp=0;
 	private int taiTabQuiz=0;
 	private int taiTabNotions=0;
 	
-	
+	/*
 	public Quiz[] getQuizz() {
 		return quizz;
 	}
@@ -33,7 +33,7 @@ public class Formation {
 	}
 	public void setNotions(Notion[] notions) {
 		this.notions = notions;
-	}
+	}*/
 	public String getNom() {
 		return nom;
 	}
@@ -58,15 +58,14 @@ public class Formation {
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
+	
 	public Formation(String nom, String description, Date dateDebut, Date dateFin) {
 		super();
 		this.nom = nom;
 		this.description = description;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.apprenants=new Apprenant[30];
-		this.quizz=new Quiz[20];
-		this.notions=new Notion[30];
+		
 	}
 	//Ajouter apprenant 
 	/**
@@ -77,11 +76,24 @@ public class Formation {
 	public boolean ajoutApprenant(Apprenant apprenant)
 	{
 		if (apprenant!= null) {
-			this.apprenants[taiTabApp]=apprenant;
-			taiTabApp++;
+			
+			this.apprenants.add(apprenant);
+			
 		}else {//Erreur
 			}
 		return false;
+	}
+	
+	public boolean suppApprenant(int index)
+	{
+		apprenants.remove(index);	
+		return true;
+	}
+	
+	public boolean majApprenant(int index,Apprenant apprenant) {
+		apprenants.set(index, apprenant);
+		return true;
+		
 	}
 	//Ajouter des Notions
 	/**
@@ -91,12 +103,22 @@ public class Formation {
 	 */
 	public boolean ajoutNotions(Notion notion) {
 		if (notion!= null) {
-			this.notions[taiTabNotions]=notion;
-			taiTabNotions++;
+			this.notions.add(notion);
+			
 			return true;
 		}else {//Erreur
 			}
 		return false;
+	}
+	public boolean suppNotions(int index)
+	{
+		notions.remove(index);	
+		return true;
+	}
+	public boolean majNotion(int index,Notion not) {
+		notions.set(index, not);
+		return true;
+		
 	}
 	//Ajouter un Quiz
 	/**
@@ -106,25 +128,41 @@ public class Formation {
 	 */
 	public boolean ajoutQuiz(Quiz quiz) {
 		if (quiz!= null) {
-			this.quizz[taiTabQuiz]=quiz;
-			taiTabNotions++;
+			this.quizz.add(quiz);
 		}else {//Erreur
 			}
 		return false;
 	}
+	
+	public boolean suppQuiz(int index)
+	{
+		quizz.remove(index);	
+		return true;
+	}
+	public boolean majQuiz(int index,Quiz quiz) {
+		quizz.set(index, quiz);
+		return true;
+		
+	}
+	
 	public void afficheNotions() {
-		for(int i=0;i< taiTabNotions ; i++ ) {
-			System.out.println(i+ "- "+notions[i].getDescriptionNotion());
+		int i=1;
+		for(Notion n:notions) {
+			System.out.println(i+ "- "+n.getDescriptionNotion());
+			i++;
 		}
 	}
 	public void afficheApprenants() {
-		for(int i=0;i< taiTabApp ; i++ ) {
-			System.out.println((i+1)+"- "+apprenants[i].getIdentifiant());
+		int i=1;
+		
+		for(Apprenant appr:apprenants ) {
+			System.out.println(i+"- "+appr.getIdentifiant()+"\t"+appr.getMotDePasse()+"\t"+appr.getNom()+"\t"+appr.getPrenom());
+			i++;
 		}
 	}
 	public void affichequiz() {
 		for(int i=0;i< taiTabApp ; i++ ) {
-			System.out.println(quizz[i].getNom());
+			//System.out.println(quizz[i].getNom());
 		}
 	}
 }
