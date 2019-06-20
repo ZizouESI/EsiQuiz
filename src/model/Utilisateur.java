@@ -1,6 +1,6 @@
 package model;
 
-public class Utilisateur {
+public class Utilisateur implements Comparable<Utilisateur> {
 	
 	private String Identifiant;
 	private String MotDePasse;
@@ -43,6 +43,18 @@ public class Utilisateur {
 		Prenom = prenom;
 	}
 	
+	public int compareTo(Utilisateur util) {
+		String identifiant=util.getIdentifiant();
+		return this.Identifiant.compareTo(identifiant);
+	}
+	public int hashCode() {
+		return this.Identifiant.hashCode();
+	}
 	
+	public boolean equals(Object o) {
+		if(o == null) return false;
+		if(!(o instanceof Utilisateur)) return false;
+		return Identifiant.equals(((Utilisateur)o).getIdentifiant());
+	}
 	
 }
