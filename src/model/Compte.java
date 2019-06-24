@@ -3,8 +3,8 @@ package model;
 public class Compte implements Comparable<Compte> {
 	private Utilisateur utilisateur;
 	
-	public Compte() {
-		
+	public Compte(Utilisateur util) {
+		this.utilisateur=util;
 	}
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
