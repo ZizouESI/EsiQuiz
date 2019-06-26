@@ -44,13 +44,27 @@ public class Notion {
 		return false;
 	}
 	
-	public void supprimerQuestion(int num) {
-		
+	public void supprimerQuestion(Question question) {
+		if(questions.contains(question)) {
+		Iterator<Question> it=questions.iterator();
+		boolean bool=false;
+			Question questionRechercher=null;
+			while((it.hasNext())&(bool == false )) {
+				questionRechercher=it.next();
+				if(questionRechercher == question) {
+					bool=true;
+				}
+			}
+			questions.remove(questionRechercher);		}
+	}
+	public void modifierQuestion(int index,Question question) {
+		questions.set(index, question);
 	}
 	
 	public void afficheQuestions() {
 		Iterator<Question> it= questions.iterator();
 		int i=1;
+		System.out.println(this.descriptionNotion);
 		while (it.hasNext()) {
 			Question ques=it.next();
 			System.out.println(i+"-"+ ques.getEnonce());

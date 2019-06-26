@@ -19,12 +19,21 @@ public class Qcu extends Question{
 		
 	}
 	public void ajoutRepFausse(String reponse) {
-		this.reponse.add(reponse);
+		
 		this.reponsesFausses.add(reponse);
 	}
 	public void ajoutRepJuste(String reponse) {
 		this.reponseJuste=reponse;
-		this.reponse.add(reponse);
+		
+	}
+	public boolean ajoutRep(String reponse) {
+		if (reponse!= "") {
+			this.reponses.add(reponse);
+			
+			return true;
+		}else {//Erreur
+			}
+		return false;
 	}
 	public void afficheReponses()
 	{
@@ -33,6 +42,11 @@ public class Qcu extends Question{
 		while (it.hasNext()) {
 			System.out.println(i+"-"+ it.next());
 			i++;
+			}
+		Iterator<String> it1= reponse.iterator();
 		
-	}
+		while (it1.hasNext()) {
+			System.out.println(i+"-"+ it1.next());
+			i++;
+			}
 }}
