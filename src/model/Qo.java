@@ -22,4 +22,6 @@ public class Qo extends Question {
 		 * ajouter une propostion au tableau de propos 
 		 */
 	}
+
+	
 }

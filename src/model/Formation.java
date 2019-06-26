@@ -16,10 +16,7 @@ public class Formation {
 	//private Formateur formateur; facultatif
 	private ArrayList<Notion> notions=new ArrayList<Notion>();
 	
-	//manipulation tableau 
-	private int taiTabApp=0;
-	private int taiTabQuiz=0;
-	private int taiTabNotions=0;
+	
 	
 	/*
 	public Quiz[] getQuizz() {
@@ -161,8 +158,6 @@ public class Formation {
 		}
 	}
 	public void affichequiz() {
-		for(int i=0;i< taiTabApp ; i++ ) {
-			//System.out.println(quizz[i].getNom());
-		}
+		
 	}
 }

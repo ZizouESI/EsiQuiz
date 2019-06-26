@@ -5,9 +5,9 @@ public class Apprenant extends Utilisateur {
 	private Date dateDeNaissance;
 	private String adresse;
 	private Groupe groupe;
-	private Quiz[] quizzAcomp;
-	private Quiz[] quizzNonAcompli;
-	private Quiz[] quizzExpiré;
+	private ArrayList<Quiz> quizzAcomp;
+	private ArrayList<Quiz> quizzNonAcompli;
+	private ArrayList<Quiz> quizzExpiré;
 	
 	//manipulation des tableaux
 	private int taiTabQuizAcomp=0;
@@ -37,7 +37,7 @@ public class Apprenant extends Utilisateur {
 	public Quiz choisirQuiz(int numQuiz)
 	{
 		//on peut afficher ses question/reponses ici ou bien dans le main si on veut "pour le scenario"
-		return(quizzNonAcompli[numQuiz]);
+		return(null);
 	}
 	
 	public void validerQuiz(Quiz quiz)

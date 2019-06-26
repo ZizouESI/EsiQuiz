@@ -1,21 +1,24 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Qcm extends Question {
 	
 	private int nbPropositions;
-	private String[] reponsesJustes=new String[4];
-	private String[] reponsesFausses=new String[4];
-	private String[] reponses=new String[4];
+	private ArrayList<String> reponsesJustes;
+	private ArrayList<String> reponsesFausses;
+	private ArrayList<String> reponses;
 	
-	private int taiTabRepJuste=0;
-	private int taiTabRepFausse=0;
-	private int taiTabRep=0;
 	
 	
 	public Qcm(String enonce) {
 		super(enonce);
+		this.reponses= new ArrayList<String>();
+		this.reponsesFausses=new ArrayList<String>();
+		this.reponsesJustes=new ArrayList<String>();
 	}
-
+	
 	public void evaluer()
 	{
 		
@@ -23,8 +26,8 @@ public class Qcm extends Question {
 	
 	public boolean ajoutRepJuste(String reponse) {
 		if (reponse!= "") {
-			reponsesJustes[taiTabRepJuste]=reponse;
-			taiTabRepJuste++;
+			this.reponsesJustes.add(reponse);
+			this.reponses.add(reponse);
 			return true;
 		}else {//Erreur
 			}
@@ -32,8 +35,8 @@ public class Qcm extends Question {
 	}
 	public boolean ajoutRepFausse(String reponse) {
 		if (reponse!= "") {
-			this.reponsesJustes[taiTabRepJuste]=reponse;
-			taiTabRepJuste++;
+			this.reponsesJustes.add(reponse);
+			this.reponses.add(reponse);
 			return true;
 		}else {//Erreur
 			}
@@ -41,12 +44,12 @@ public class Qcm extends Question {
 	}
 	public void afficheReponses()
 	{
-		for (int i=0;i<taiTabRepJuste;i++) {
-			System.out.println(reponsesJustes[i]);
-		}
-		for (int i=0;i<taiTabRepFausse;i++) {
-			System.out.println(reponsesFausses[i]);
-		}
+		Iterator<String> it= reponses.iterator();
+		int i=1;
+		while (it.hasNext()) {
+			System.out.println(i+"-"+ it.next());
+			i++;
 		
 	}
+}
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Iterator;
+
 abstract class Question {
    private  String enonce;
    private String Type;
@@ -14,12 +16,24 @@ abstract class Question {
 	    */
    
    public abstract void evaluer();
-   public Question(String enonce) {
+   public String getEnonce() {
+		return enonce;
+	}
+	public void setEnonce(String enonce) {
+		this.enonce = enonce;
+	}
+	public String getType() {
+		return Type;
+	}
+	public void setType(String type) {
+		Type = type;
+	}
+public Question(String enonce) {
 	   super();
 	   this.enonce = enonce;
    }
    public void afficheEnonce() {
 	   System.out.println(enonce);
    }
-   
+  
 }
