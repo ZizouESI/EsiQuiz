@@ -5,7 +5,7 @@ public class Quiz {
 	private String Nom;
 	private Date dateDebut;
 	private Date dateFin;
-	private Notion[] notion;
+	private ArrayList<Notion> notion;
 	private float score;
 	
 	private int taiTabNotions=0;
@@ -23,6 +23,7 @@ public class Quiz {
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.score = score;
+		this.notion=new ArrayList<Notion>();
 	}
 	public String getNom() {
 		return Nom;
@@ -48,9 +49,13 @@ public class Quiz {
 	public void setScore(float score) {
 		this.score = score;
 	}
-	public boolean ajoutNotions(Notion notion ) {
+	public void ajoutNotions(Notion notion, int nbQuestions ) {
+		//return this.notion.add(notion);
 		
-		return false;
 		
 	}
+	public boolean supprimerNotion(Notion notion) {
+		return this.notion.remove(notion);
+	}
+	
 }
