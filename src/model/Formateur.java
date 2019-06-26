@@ -1,10 +1,9 @@
 package model;
 import java.util.*;
 public class Formateur extends Utilisateur {
-	private Formation[] formations;
+	private ArrayList<Formation> formations;
 	
-	//manipulation de tableau
-	private int tailTabForm=0;
+	
 	
 	/**
 	 * the constructor 
@@ -17,11 +16,11 @@ public class Formateur extends Utilisateur {
 	public Formateur(String identifiant, String motDePasse, String nom, String prenom)
 	{
 		super(identifiant,motDePasse, nom, prenom);
-		this.formations=new Formation[1];
+		formations=new ArrayList<Formation>();
 	}
 	 
 	
-	public Formation[] getFormations() {
+	public ArrayList<Formation> getFormations() {
 		return formations;
 	}
 
@@ -33,20 +32,27 @@ public class Formateur extends Utilisateur {
 		
 		return false;
 	}
-	/*public void modifierUnCompte() {
+	/**
+	 * 
+	 * @param compte
+	 * @param comptes qui sera le seul hashSet definie 
+	 * @param nouveauMotDePasse
+	 */
+	public void modifierUnCompte(Compte compte,Comptes comptes,String nouveauMotDePasse) {
 		
+		comptes.modifierCompte(compte, nouveauMotDePasse);
+	
 	}
-	public void supprimerUnCompte() {
-		
-	}*/
+	public void supprimerUnCompte(Compte compte,Comptes comptes) {
+		comptes.supprimerCompte(compte);
+	}
 	
 	//ajouter une formation 
 	public boolean ajouterFormation(Formation formation)
 	{
 		if(formation != null)
 		{
-			this.formations[tailTabForm]=formation;
-			tailTabForm++;
+			this.formations.add(formation);
 			return true;
 		}
 		
@@ -55,9 +61,9 @@ public class Formateur extends Utilisateur {
 	//Affichage des formation 
 	public void afficherFormations()
 	{
-		for(int i=0;i<tailTabForm;i++)
-		{
-			System.out.println(formations[i]);
+		Iterator<Formation> it=formations.iterator();
+		while (it.hasNext()) {
+			System.out.println(it.next());
 		}
 	}
 }
