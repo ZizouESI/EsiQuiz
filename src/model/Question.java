@@ -16,6 +16,7 @@ abstract class Question {
 	    */
    
    public abstract void evaluer();
+   
    public String getEnonce() {
 		return enonce;
 	}

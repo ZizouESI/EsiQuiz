@@ -103,8 +103,8 @@ public class Quiz {
 			Question quu=it1.next();
 			if (quu==ques) {
 				for(String s : rep) {
-					if (ques instanceof Qcm ) ((Qcm)ques).ajoutRep(s);
-					if (ques instanceof Qcu ) ((Qcu)ques).ajoutRep(s);
+					if (ques instanceof Qcm ) ((Qcm)ques).repondre(s);
+					if (ques instanceof Qcu ) ((Qcu)ques).repondre(s);
 				}
 			}
 			i++;

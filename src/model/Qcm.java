@@ -42,14 +42,10 @@ public class Qcm extends Question {
 			}
 		return false;
 	}
-	public boolean ajoutRep(String reponse) {
-		if (reponse!= "") {
+	public void repondre(String reponse) {
+		
 			this.reponses.add(reponse);
-			
-			return true;
-		}else {//Erreur
-			}
-		return false;
+
 	}
 	public void afficheReponses()
 	{
@@ -68,4 +64,6 @@ public class Qcm extends Question {
 		
 	}
 }
+
+	
 }

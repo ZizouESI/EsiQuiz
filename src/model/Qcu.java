@@ -26,9 +26,9 @@ public class Qcu extends Question{
 		this.reponseJuste=reponse;
 		
 	}
-	public boolean ajoutRep(String reponse) {
+	public boolean repondre(String reponse) {
 		if (reponse!= "") {
-			this.reponses.add(reponse);
+			this.reponse.add(reponse);
 			
 			return true;
 		}else {//Erreur
@@ -37,16 +37,16 @@ public class Qcu extends Question{
 	}
 	public void afficheReponses()
 	{
-		Iterator<String> it= reponse.iterator();
+		
 		int i=1;
-		while (it.hasNext()) {
-			System.out.println(i+"-"+ it.next());
+		
+			System.out.println(i+"-"+ reponseJuste);
 			i++;
-			}
-		Iterator<String> it1= reponse.iterator();
+		Iterator<String> it1= reponsesFausses.iterator();
 		
 		while (it1.hasNext()) {
 			System.out.println(i+"-"+ it1.next());
 			i++;
 			}
-}}
+}
+	}

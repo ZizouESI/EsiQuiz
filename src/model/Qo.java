@@ -1,12 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Qo extends Question {
 	
 	public Qo(String enonce) {
 		super(enonce);
 		// TODO Auto-generated constructor stub
 	}
-	private String[] bonneReponsesProposé;
+	private ArrayList<String> bonneReponsesProposé;
 	private String reponse;
 	
 	public void evaluer()
@@ -21,6 +23,11 @@ public class Qo extends Question {
 		/**
 		 * ajouter une propostion au tableau de propos 
 		 */
+		this.bonneReponsesProposé.add(propo);
+	}
+	public void repondre(String rep) {
+		// TODO Auto-generated method stub
+		this.reponse=rep;
 	}
 
 	
