@@ -11,13 +11,28 @@ public class Qo extends Question {
 	private ArrayList<String> bonneReponsesProposé;
 	private String reponse;
 	
-	public void evaluer()
+	
+	public float evaluer()
 	{
 		/**
 		 * la redifinition que on doit devlopper selon 
 		 * la notation d'une Question ouverte donnée 
 		 * dans le livrable
 		 */
+		if (bonneReponsesProposé.contains(reponse))return 1;
+		return 0;
+	}
+	public ArrayList<String> getBonneReponsesProposé() {
+		return bonneReponsesProposé;
+	}
+	public void setBonneReponsesProposé(ArrayList<String> bonneReponsesProposé) {
+		this.bonneReponsesProposé = bonneReponsesProposé;
+	}
+	public String getReponse() {
+		return reponse;
+	}
+	public void setReponse(String reponse) {
+		this.reponse = reponse;
 	}
 	public void ajoutProposition(String propo) {
 		/**

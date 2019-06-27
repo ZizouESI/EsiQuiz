@@ -7,16 +7,35 @@ public class Qcu extends Question{
 	
 	private String reponseJuste;
 	private ArrayList<String> reponsesFausses;
-	private ArrayList<String> reponse;
+	private String reponse;
 	
+	public String getReponseJuste() {
+		return reponseJuste;
+	}
+	public void setReponseJuste(String reponseJuste) {
+		this.reponseJuste = reponseJuste;
+	}
+	public ArrayList<String> getReponsesFausses() {
+		return reponsesFausses;
+	}
+	public void setReponsesFausses(ArrayList<String> reponsesFausses) {
+		this.reponsesFausses = reponsesFausses;
+	}
+	public String getReponse() {
+		return reponse;
+	}
+	public void setReponse(String reponse) {
+		this.reponse = reponse;
+	}
 	public Qcu(String enonce) {
 		super(enonce);
 		reponsesFausses=new ArrayList<String>();
-		reponse=new ArrayList<String>();
+		
 		// TODO Auto-generated constructor stub
 	}
-	public void evaluer() {
-		
+	public float evaluer() {
+		if(reponse==reponseJuste)return 1;
+		return 0;
 	}
 	public void ajoutRepFausse(String reponse) {
 		
@@ -26,14 +45,8 @@ public class Qcu extends Question{
 		this.reponseJuste=reponse;
 		
 	}
-	public boolean repondre(String reponse) {
-		if (reponse!= "") {
-			this.reponse.add(reponse);
-			
-			return true;
-		}else {//Erreur
-			}
-		return false;
+	public void repondre(String reponse) {
+		this.reponse=reponse;
 	}
 	public void afficheReponses()
 	{

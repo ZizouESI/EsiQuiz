@@ -9,8 +9,7 @@ public class Apprenant extends Utilisateur {
 	private ArrayList<Quiz> quizzNonAcompli;
 	private ArrayList<Quiz> quizzExpiré;
 	
-	//manipulation des tableaux
-	private int taiTabQuizAcomp=0;
+	
 	/**
 	 * the differents methods 
 	 */
@@ -24,6 +23,18 @@ public class Apprenant extends Utilisateur {
 		this.dateDeNaissance = dateDeNaissance;
 		this.adresse = adresse;
 		this.groupe = groupe;
+		quizzAcomp=new ArrayList<Quiz>();
+		 quizzNonAcompli=new ArrayList<Quiz>();
+		 quizzExpiré=new ArrayList<Quiz>();
+	}
+	public void ajouterQuizAcomp(Quiz quiz) {
+		this.quizzAcomp.add(quiz);
+	}
+	public void ajouterQuizNonAcomp(Quiz quiz) {
+		this.quizzNonAcompli.add(quiz);
+	}
+	public void ajouterQuizExpiré(Quiz quiz) {
+		this.quizzExpiré.add(quiz);
 	}
 	public void sauvgarderRep()
 	{
@@ -42,6 +53,29 @@ public class Apprenant extends Utilisateur {
 	
 	public void validerQuiz(Quiz quiz)
 	{
+		
+	}
+	public void consultationActiviteApprenant() {
+		Quiz quiz;
+		System.out.println("L'activité de l'apprenant "+super.getNom()+" est la suivante :");
+		System.out.println("Les quizz accomplis:");
+		Iterator<Quiz> it=this.quizzAcomp.iterator();
+		while(it.hasNext()) {
+			quiz=it.next();
+			System.out.println("--->"+quiz.getNom() +" avec taux d'accomplissement de "+quiz.getTauxAccomplissement());
+		}
+		System.out.println("Les quizz non accomplis:");
+		Iterator<Quiz> it1=this.quizzNonAcompli.iterator();
+		while(it1.hasNext()) {
+			quiz=it1.next();
+			System.out.println("--->"+quiz.getNom() +" avec taux d'accomplissement de "+quiz.getTauxAccomplissement());
+		}
+		System.out.println("Les quizz Expiré:");
+		Iterator<Quiz> it2=this.quizzExpiré.iterator();
+		while(it2.hasNext()) {
+			quiz=it2.next();
+			System.out.println("--->"+quiz.getNom() +" avec taux d'accomplissement de "+quiz.getTauxAccomplissement());
+		}
 		
 	}
 }

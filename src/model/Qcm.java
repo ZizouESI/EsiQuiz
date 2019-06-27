@@ -12,6 +12,38 @@ public class Qcm extends Question {
 	
 	
 	
+	public int getNbPropositions() {
+		return nbPropositions;
+	}
+
+	public void setNbPropositions(int nbPropositions) {
+		this.nbPropositions = nbPropositions;
+	}
+
+	public ArrayList<String> getReponsesJustes() {
+		return reponsesJustes;
+	}
+
+	public void setReponsesJustes(ArrayList<String> reponsesJustes) {
+		this.reponsesJustes = reponsesJustes;
+	}
+
+	public ArrayList<String> getReponsesFausses() {
+		return reponsesFausses;
+	}
+
+	public void setReponsesFausses(ArrayList<String> reponsesFausses) {
+		this.reponsesFausses = reponsesFausses;
+	}
+
+	public ArrayList<String> getReponses() {
+		return reponses;
+	}
+
+	public void setReponses(ArrayList<String> reponses) {
+		this.reponses = reponses;
+	}
+
 	public Qcm(String enonce) {
 		super(enonce);
 		this.reponses= new ArrayList<String>();
@@ -19,9 +51,33 @@ public class Qcm extends Question {
 		this.reponsesJustes=new ArrayList<String>();
 	}
 	
-	public void evaluer()
+	public float evaluer()
 	{
-		
+		float taux=1/nbPropositions,moyenne=0;
+		Iterator<String> it=reponses.iterator();
+		while(it.hasNext()) {
+			String rep=it.next();
+			if (this.reponsesJustes.contains(rep)) {
+				moyenne+=taux;
+			}
+			if(this.reponsesFausses.contains(rep)) {
+				moyenne-=taux;
+			}	
+		}
+		Iterator<String> it1=reponsesJustes.iterator();
+		while(it1.hasNext()) {
+			if(reponses.contains(it1.next())== false)
+				moyenne-=taux;
+		}
+		Iterator<String> it2=reponsesFausses.iterator();
+		while (it2.hasNext()) {
+			if(reponses.contains(it2.next())==false )
+				moyenne+=taux;
+		}
+		if (moyenne<0) {
+			return 0;
+		}
+		return moyenne;
 	}
 	
 	public boolean ajoutRepJuste(String reponse) {

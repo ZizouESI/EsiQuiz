@@ -105,10 +105,70 @@ public class Quiz {
 				for(String s : rep) {
 					if (ques instanceof Qcm ) ((Qcm)ques).repondre(s);
 					if (ques instanceof Qcu ) ((Qcu)ques).repondre(s);
+					if (ques instanceof Qo) ((Qo)ques).repondre(s);
 				}
 			}
 			i++;
 		}
 		//calculer le taux d accomplissement
+		this.tauxAccomplissement=tauxAccomplissement();
+	}
+	
+	public ArrayList<Notion> getNotion() {
+		return notion;
+	}
+	public void setNotion(ArrayList<Notion> notion) {
+		this.notion = notion;
+	}
+	private int tauxAccomplissement() {
+		Iterator<Notion> it= notion.iterator(); 
+		Notion no1;
+		Question ques;
+		int nbQues=0,nbRep=0;
+		while (it.hasNext()) {
+			no1=it.next();
+			Iterator<Question> it1=no1.getQuestions().iterator();
+			while (it1.hasNext()) {
+				ques=it1.next();
+				nbQues++;
+				if (ques instanceof Qcm ) {
+					if((((Qcm)ques).getReponses().size()) > 0)nbRep++;
+				}
+				if (ques instanceof Qcu ) {
+					if(((Qcu)ques).getReponse()!=null)nbRep++;
+				}
+				if (ques instanceof Qo) {
+					if(((Qo)ques).getReponse()!=null)nbRep++;
+				}
+			}
+		}
+		return (nbRep*100)/nbQues;
+	}
+	
+	public float evaluationQuiz() {
+		Iterator<Notion> it= notion.iterator(); 
+		Notion no1;
+		Question ques;
+		int nbQues=0;
+		float cumul=0;
+		while (it.hasNext()) {
+			no1=it.next();
+			Iterator<Question> it1=no1.getQuestions().iterator();
+			while (it1.hasNext()) {
+				ques=it1.next();
+				nbQues++;
+				if (ques instanceof Qcm ) {
+					cumul+=((Qcm)ques).evaluer();
+					
+				}
+				if (ques instanceof Qcu ) {
+					cumul+=((Qcu)ques).evaluer();
+				}
+				if (ques instanceof Qo) {
+					cumul+=((Qo)ques).evaluer();
+				}
+			}
+		}
+		return cumul/nbQues;
 	}
 }

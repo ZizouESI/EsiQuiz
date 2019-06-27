@@ -13,9 +13,10 @@ abstract class Question {
        /**
 	    * c'est la methode que va redefinire chaque type de question 
 	    * Qo,Qcm,Qcu
+     * @return 
 	    */
    
-   public abstract void evaluer();
+   public abstract float evaluer();
    
    public String getEnonce() {
 		return enonce;
